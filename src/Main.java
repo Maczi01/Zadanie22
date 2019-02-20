@@ -4,28 +4,30 @@ public class Main {
 
     public static void main(String[] args) {
 
-        displayOperation(loadData());
-        reverse(loadData());
-        maximal(loadData());
-        minimal(loadData());
+        List<Integer> userNumbers = loadData();
+
+        displayOperation(userNumbers);
+        reverse(userNumbers);
+        System.out.println(maximal(userNumbers));
+        System.out.println(minimal(userNumbers));
 
     }
 
-    private static List loadData() {
+    private static List<Integer> loadData() {
         List<Integer> listaLiczb = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         int n;
         do {
             System.out.println("Podaj liczbe: ");
             n = scanner.nextInt();
-            if (n > 0) {
+            if (n >= 0) {
                 listaLiczb.add(n);
             }
-        } while (n > 0);
+        } while (n >= 0);
         return listaLiczb;
     }
 
-    private static int sum(List listaLiczb) {
+    private static int sum(List<Integer> listaLiczb) {
         Set<Integer> nowySet = new HashSet<>(listaLiczb);
         Iterator<Integer> iter = nowySet.iterator();
         int sum = 0;
@@ -35,13 +37,14 @@ public class Main {
         return sum;
     }
 
-    private static void reverse(List listaLiczb) {
+    private static void reverse(List<Integer> listaLiczb) {
+
         for (int i = listaLiczb.size() - 1; i >= 0; i--) {
             System.out.println(listaLiczb.get(i));
         }
     }
 
-    private static void displayOperation(List listaLiczb) {
+    private static void displayOperation(List<Integer> listaLiczb) {
         int sum = sum(listaLiczb);
         Set<Integer> nowySet = new HashSet<>(listaLiczb);
         Iterator<Integer> iter = nowySet.iterator();
@@ -53,17 +56,16 @@ public class Main {
             }
 
         }
+        System.out.println();
     }
 
-    private static int maximal(List listaLiczb) {
-        Set<Integer> nowySet = new HashSet<>(listaLiczb);
-        TreeSet<Integer> pomocniczySet = new TreeSet<>(nowySet);
+    private static int maximal(List<Integer> listaLiczb) {
+        TreeSet<Integer> pomocniczySet = new TreeSet<>(listaLiczb);
         return pomocniczySet.last();
     }
 
-    private static int minimal(List listaLiczb) {
-        Set<Integer> nowySet = new HashSet<>(listaLiczb);
-        TreeSet<Integer> pomocniczySet = new TreeSet<>(nowySet);
+    private static int minimal(List<Integer> listaLiczb) {
+        TreeSet<Integer> pomocniczySet = new TreeSet<>(listaLiczb);
         return pomocniczySet.first();
     }
 }
