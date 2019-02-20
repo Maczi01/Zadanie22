@@ -8,8 +8,8 @@ public class Main {
 
         displayOperation(userNumbers);
         reverse(userNumbers);
-        System.out.println(maximal(userNumbers));
-        System.out.println(minimal(userNumbers));
+        System.out.println("Maksymalna liczba to: " + maximal(userNumbers));
+        System.out.println("Minimalna liczba to: " + minimal(userNumbers));
 
     }
 
@@ -38,7 +38,7 @@ public class Main {
     }
 
     private static void reverse(List<Integer> listaLiczb) {
-
+        System.out.println("Kolejnosc odwrotna:");
         for (int i = listaLiczb.size() - 1; i >= 0; i--) {
             System.out.println(listaLiczb.get(i));
         }
